@@ -20,7 +20,8 @@ def _build_prompt(job_text: str, knowledge: str, prompt_style: str) -> str:
 
 1. HOOK (first 2 lines):
    Start with a bold, attention-grabbing opening that speaks directly to the client's problem.
-   Make them feel like you've done this exact thing before.
+   Make them feel like you've done this exact thing before. It must and should contain one of these things
+   hi, hello, hey there, 
 
 2. BODY:
    - Clearly state you understand their problem
