@@ -55,6 +55,7 @@ with col2:
             output_box.markdown(full_proposal)
 
             try:
+                os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
                 with open(OUTPUT_PATH, "a", encoding="utf-8") as f:
                     f.write("\n\n-----------------------------\n")
                     f.write(full_proposal)
