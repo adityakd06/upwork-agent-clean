@@ -28,6 +28,7 @@ def _build_prompt(job_text: str, knowledge: str, prompt_style: str) -> str:
    - Mention specific skills and tools relevant to THIS job
    - Show how you've solved a similar problem before (use past work above as reference)
    - Briefly explain your approach to solving their specific problem
+   - i do not want this to be generated in points only paragraphs and sentences
 
 3. SPECIAL CONDITION:
    If the job description contains questions like "explain your approach", "how would you solve this",
