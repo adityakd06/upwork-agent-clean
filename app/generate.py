@@ -1,9 +1,11 @@
 from llm_client import query_llm, stream_llm
 from config import MIN_WORDS, MAX_WORDS
 
-def _build_prompt(job_text: str, knowledge: str, prompt_style: str) -> str:
-    return f"""You are a senior freelance data analyst with 7+ years of experience.
+from rag import build_index, retrieve
 
+def _build_prompt(job_text, knowledge, prompt_style):
+    index, chunks = build_index(knowledge)
+    knowledge = retrieve(job_text, index, chunks)  # only relevant chunks now
 --- YOUR WRITING STYLE & PAST WORK ---
 {knowledge}
 
