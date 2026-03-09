@@ -10,7 +10,7 @@ OUTPUT_PATH    = os.path.join(DATA_DIR, "outputs", "generated_proposals.txt")
 
 # ── Groq Settings ────────────────────────────────────────────────────────────
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
-MODEL        = "llama3-8b-8192"   # fast & free on Groq
+MODEL = "llama-3.1-8b-instant"   # fast & free on Groq
 
 # ── Proposal Settings ────────────────────────────────────────────────────────
 MIN_WORDS = 120
