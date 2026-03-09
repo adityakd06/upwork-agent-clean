@@ -4,7 +4,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
-KNOWLEDGE_PATH = os.path.join(DATA_DIR, "knowledge_base", "PowerBI_Healthcare_Proposal.docx")
+KNOWLEDGE_PATH = os.path.join(DATA_DIR, "knowledge_base")
 PROMPT_PATH    = os.path.join(DATA_DIR, "prompts", "PROMPTS.docx")
 OUTPUT_PATH    = os.path.join(DATA_DIR, "outputs", "generated_proposals.txt")
 
