@@ -1,7 +1,6 @@
 import requests
 import streamlit as st
-from app.config import GROQ_API_URL, MODEL
-
+from config import GROQ_API_URL, MODEL
 
 def _get_api_key() -> str:
     """

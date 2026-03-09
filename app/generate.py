@@ -1,6 +1,5 @@
-from app.llm_client import query_llm, stream_llm
-from app.config import MIN_WORDS, MAX_WORDS
-
+from llm_client import query_llm, stream_llm
+from config import MIN_WORDS, MAX_WORDS
 
 def _build_prompt(job_text: str, knowledge: str, prompt_style: str) -> str:
     return f"""You are a senior freelance data analyst with 7+ years of experience.

@@ -1,7 +1,7 @@
 import streamlit as st
-from app.loader import load_knowledge, load_prompt
-from app.generate import stream_proposal
-from app.config import KNOWLEDGE_PATH, PROMPT_PATH, OUTPUT_PATH
+from loader import load_knowledge, load_prompt
+from generate import stream_proposal
+from config import KNOWLEDGE_PATH, PROMPT_PATH, OUTPUT_PATH
 
 st.set_page_config(page_title="Upwork AI Agent", layout="wide")
 
