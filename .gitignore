@@ -1,0 +1,11 @@
+# Never commit your API key
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Outputs (optional — remove if you want to track proposals)
+data/outputs/generated_proposals.txt
