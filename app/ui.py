@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from loader import load_knowledge, load_prompt
 from generate import stream_proposal
