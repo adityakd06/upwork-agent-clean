@@ -66,7 +66,7 @@ STRICT RULES — follow these or the output is wrong:
 --- PROPOSAL FORMAT TO FOLLOW ---
 
 PARAGRAPH 1 — HOOK:
-One or two punchy lines that show you immediately understand the client's core problem. Make it specific to their job, not generic.
+Star with "Hi, Hello, Hey"One or two punchy lines that show you immediately understand the client's core problem. Make it specific to their job, not generic.
 
 PARAGRAPH 2 — BODY:
 Show you've solved this exact type of problem before. Mention only tools and skills that are relevant to THIS job description. Briefly explain your approach without giving everything away.
