@@ -79,6 +79,8 @@ If the job does NOT ask this, skip this paragraph entirely.
 PARAGRAPH 4 — CLOSURE:
 Warm, confident call to action. Ask when they're free for a quick call. Keep it human, not salesy.
 
+REGARDS:always write /n best regards/n sagar "or" /n warm regards/n sagar
+
 --- JOB DESCRIPTION ---
 {job_text}
 """
