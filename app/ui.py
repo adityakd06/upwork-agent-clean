@@ -1,5 +1,9 @@
 import os
+import datetime
+from io import BytesIO
+
 import streamlit as st
+from docx import Document
 from loader import load_knowledge, load_prompt
 from generate import stream_proposal
 from config import KNOWLEDGE_PATH, PROMPT_PATH, OUTPUT_PATH
@@ -17,13 +21,11 @@ def get_prompt_style():
 knowledge    = get_knowledge()
 prompt_style = get_prompt_style()
 
-# ── Keep proposal alive across reruns ────────────────────────────────────────
 if "proposal" not in st.session_state:
     st.session_state.proposal = ""
 
-# ── UI ───────────────────────────────────────────────────────────────────────
 st.title("📊 Upwork Proposal Generator")
-st.caption("Powered by your local LLM via Ollama")
+st.caption("Powered by Groq")
 
 col1, col2 = st.columns([1, 1], gap="large")
 
@@ -54,22 +56,30 @@ with col2:
 
             st.session_state.proposal = full_proposal
             output_box.markdown(full_proposal)
-
-            try:
-                os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-                with open(OUTPUT_PATH, "a", encoding="utf-8") as f:
-                    f.write("\n\n-----------------------------\n")
-                    f.write(full_proposal)
-                st.success("✅ Saved to generated_proposals.txt")
-            except Exception as e:
-                st.error(f"Could not save output: {e}")
-
             st.code(full_proposal, language=None)
 
-    elif st.session_state.proposal:
-        # Restore proposal if page reruns (e.g. user edits the text area)
+    if st.session_state.proposal:
         output_box.markdown(st.session_state.proposal)
-        st.code(st.session_state.proposal, language=None)
 
+        if st.button("✅ Save to Knowledge Base"):
+            doc = Document()
+            doc.add_paragraph("JOB TYPE: (fill this in)")
+            doc.add_paragraph("SKILLS USED: (fill this in)")
+            doc.add_paragraph("RESULT: Won the contract")
+            doc.add_paragraph(f"DATE: {datetime.date.today()}")
+            doc.add_paragraph("")
+            doc.add_paragraph("PROPOSAL:")
+            doc.add_paragraph(st.session_state.proposal)
+
+            buffer = BytesIO()
+            doc.save(buffer)
+            buffer.seek(0)
+
+            st.download_button(
+                label="📥 Download .docx",
+                data=buffer,
+                file_name=f"proposal_{datetime.date.today()}.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            )
     else:
         output_box.info("Your proposal will appear here once generated.")
