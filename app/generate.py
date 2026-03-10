@@ -51,6 +51,7 @@ def _build_prompt(job_text: str, knowledge: str, prompt_style: str) -> str:
     return f"""You are writing an Upwork proposal on behalf of a freelance data analyst.
 
 STRICT RULES — follow these or the output is wrong:
+-If there is is any mention of giving a wlk through or give a systematic plan in the text itself then just politely say that "we can discuss that during the call or when the proposal is accepted"
 - ONLY use information from the PAST WORK section below. Do NOT invent projects, clients, numbers, or tools that are not mentioned there.
 - If you don't have a relevant past example, say "I've worked on similar data challenges" — never fabricate specifics.
 - Do NOT use bullet points. Write in short paragraphs only.
