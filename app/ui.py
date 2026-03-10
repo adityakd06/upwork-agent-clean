@@ -63,10 +63,6 @@ with col2:
 
         if st.button("✅ Save to Knowledge Base"):
             doc = Document()
-            doc.add_paragraph("JOB TYPE: (fill this in)")
-            doc.add_paragraph("SKILLS USED: (fill this in)")
-            doc.add_paragraph("RESULT: Won the contract")
-            doc.add_paragraph(f"DATE: {datetime.date.today()}")
             doc.add_paragraph("")
             doc.add_paragraph("PROPOSAL:")
             doc.add_paragraph(st.session_state.proposal)
