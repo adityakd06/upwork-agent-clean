@@ -57,6 +57,7 @@ STRICT RULES — follow these or the output is wrong:
 - Do NOT use bullet points. Write in short paragraphs only.
 - Do NOT add a subject line, title, or any preamble. Start the proposal directly.
 - Keep it strictly between {MIN_WORDS} and {MAX_WORDS} words.
+- IMPORTANT: Before writing anything, scan the job description for any special instructions like writing a specific word, phrase, or code at the top (e.g. "write Banana at the top"). If found, place that exact word or phrase on the very first line before the proposal starts.
 
 --- PAST WORK & WRITING STYLE (only use what's here) ---
 {relevant_knowledge}
