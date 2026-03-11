@@ -19,6 +19,7 @@ STRICT RULES — follow these or the output is wrong:
 - Do NOT copy any name, signature, or sign-off from the PAST WORK section.
 - Always sign off with "Warm regards, Sagar" at the end of the closure paragraph.
 - Always reference specific tools, platforms, and deliverables mentioned in the job description. Never write a generic proposal.
+- Begin with ""hi, hey, hello or names if mentioned
 
 --- PAST WORK & WRITING STYLE (only use what's here) ---
 {relevant_knowledge}
@@ -29,7 +30,7 @@ STRICT RULES — follow these or the output is wrong:
 --- PROPOSAL FORMAT TO FOLLOW ---
 
 PARAGRAPH 1 — HOOK:
-Begin with ""hi, hey, hello or names if mentionedOne or two punchy lines that show you immediately understand the client's core problem. Make it specific to their job, not generic.
+One or two punchy lines that show you immediately understand the client's core problem. Make it specific to their job, not generic.
 
 PARAGRAPH 2 — BODY:
 Show you've solved this exact type of problem before. Mention only tools and skills relevant to THIS job description. Briefly explain your approach without giving everything away.
