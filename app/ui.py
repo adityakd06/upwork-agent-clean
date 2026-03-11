@@ -54,6 +54,17 @@ with col2:
     st.subheader("✍️ Generated Proposal")
     output_box = st.empty()
 
+    def render_output(text):
+        """Split proposal and question answers into two sections if divider exists."""
+        if "---" in text:
+            parts = text.split("---", 1)
+            st.markdown(parts[0].strip())
+            st.divider()
+            st.subheader("💬 Answers to Client Questions")
+            st.markdown(parts[1].strip())
+        else:
+            st.markdown(text)
+
     if generate_btn:
         if not job_description.strip():
             st.warning("Please paste a job description first.")
@@ -61,22 +72,29 @@ with col2:
             st.session_state.proposal = ""
             full_proposal = ""
 
+            # Stream tokens live
             for token in stream_proposal(job_description, client_questions, knowledge, prompt_style):
                 full_proposal += token
                 output_box.markdown(full_proposal + "▌")
 
+            # Clear the streaming placeholder and render properly
+            output_box.empty()
             st.session_state.proposal = full_proposal
-            output_box.markdown(full_proposal)
+            render_output(full_proposal)
             st.code(full_proposal, language=None)
 
-    if st.session_state.proposal:
-        output_box.markdown(st.session_state.proposal)
+    elif st.session_state.proposal:
+        output_box.empty()
+        render_output(st.session_state.proposal)
+        st.code(st.session_state.proposal, language=None)
 
+    else:
+        output_box.info("Your proposal will appear here once generated.")
+
+    # Save to Knowledge Base
+    if st.session_state.proposal:
         if st.button("✅ Save to Knowledge Base"):
             doc = Document()
-            doc.add_paragraph("JOB TYPE: (fill this in)")
-            doc.add_paragraph("SKILLS USED: (fill this in)")
-            doc.add_paragraph("RESULT: Won the contract")
             doc.add_paragraph(f"DATE: {datetime.date.today()}")
             doc.add_paragraph("")
             doc.add_paragraph("PROPOSAL:")
@@ -92,5 +110,3 @@ with col2:
                 file_name=f"proposal_{datetime.date.today()}.docx",
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             )
-    else:
-        output_box.info("Your proposal will appear here once generated.")

@@ -84,6 +84,12 @@ Warm, confident call to action. Ask when they're free for a quick call. Keep it 
 
 REGARDS:always write /n best regards/n sagar "or" /n warm regards/n sagar
 
+SECTION 2 — CLIENT QUESTIONS (only if questions are provided):
+After the proposal, add a divider "---" then a section titled "Answers to Your Questions:"
+Answer each question in a numbered list, directly and honestly.
+Each answer should be 2-4 sentences. Do not be vague or say "we can discuss later" for these — answer them properly.
+Keep the proposal and the question answers clearly separated.
+
 --- CLIENT QUESTIONS (answer these directly and honestly) ---
 {client_questions if client_questions.strip() else "No specific questions asked."}
 
