@@ -3,7 +3,7 @@ from config import MIN_WORDS, MAX_WORDS
 from rag import build_index, retrieve
 
 
-def _build_prompt(job_text: str, knowledge: str, prompt_style: str) -> str:
+def _build_prompt(job_text, client_questions, knowledge, prompt_style) -> str:
     index, chunks = build_index(knowledge)
     relevant_knowledge = retrieve(job_text, index, chunks)  # only relevant chunks
 
@@ -57,7 +57,9 @@ STRICT RULES — follow these or the output is wrong:
 - Do NOT use bullet points. Write in short paragraphs only.
 - Do NOT add a subject line, title, or any preamble. Start the proposal directly.
 - Keep it strictly between {MIN_WORDS} and {MAX_WORDS} words.
-- IMPORTANT: Before writing anything, scan the job description for any special instructions like writing a specific word, phrase, or code at the top (e.g. "write Banana at the top"). If found, place that exact word or phrase on the very first line before the proposal starts.
+- IMPORTANT: Before writing anything, scan the job description for any special instructions like writing a
+- If CLIENT QUESTIONS are provided, answer each one directly and honestly in the BODY section. Do not dodge them.
+- If no questions are provided, follow the normal proposal structure. specific word, phrase, or code at the top (e.g. "write Banana at the top"). If found, place that exact word or phrase on the very first line before the proposal starts.
 
 --- PAST WORK & WRITING STYLE (only use what's here) ---
 {relevant_knowledge}
@@ -82,17 +84,17 @@ Warm, confident call to action. Ask when they're free for a quick call. Keep it 
 
 REGARDS:always write /n best regards/n sagar "or" /n warm regards/n sagar
 
+--- CLIENT QUESTIONS (answer these directly and honestly) ---
+{client_questions if client_questions.strip() else "No specific questions asked."}
+
 --- JOB DESCRIPTION ---
 {job_text}
 """
 
-def generate_proposal(job_text: str, knowledge: str, prompt_style: str) -> str:
-    """Returns the full proposal as a string (blocking). Used by CLI."""
-    prompt = _build_prompt(job_text, knowledge, prompt_style)
+def generate_proposal(job_text, client_questions, knowledge, prompt_style):
+    prompt = _build_prompt(job_text, client_questions, knowledge, prompt_style)
     return query_llm(prompt)
 
-
-def stream_proposal(job_text: str, knowledge: str, prompt_style: str):
-    """Yields proposal tokens one by one (streaming). Used by Streamlit UI."""
-    prompt = _build_prompt(job_text, knowledge, prompt_style)
+def stream_proposal(job_text, client_questions, knowledge, prompt_style):
+    prompt = _build_prompt(job_text, client_questions, knowledge, prompt_style)
     yield from stream_llm(prompt)

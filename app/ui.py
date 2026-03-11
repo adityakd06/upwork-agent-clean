@@ -36,6 +36,13 @@ with col1:
         height=350,
         placeholder="Paste the full job description...",
         label_visibility="collapsed",
+
+        client_questions = st.text_area(
+        label="Client Questions (optional)",
+        height=150,
+        placeholder="Paste any questions the client asked...",
+        label_visibility="visible",
+)
     )
     generate_btn = st.button("✨ Generate Proposal", use_container_width=True, type="primary")
 
@@ -50,7 +57,7 @@ with col2:
             st.session_state.proposal = ""
             full_proposal = ""
 
-            for token in stream_proposal(job_description, knowledge, prompt_style):
+            for token in stream_proposal(job_description, client_questions, knowledge, prompt_style):
                 full_proposal += token
                 output_box.markdown(full_proposal + "▌")
 
