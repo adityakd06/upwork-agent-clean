@@ -74,6 +74,7 @@ with col2:
 
             # ── Stream Answers (only if questions provided) ──────────
             if client_questions.strip():
+                time.sleep(5)
                 st.divider()
                 st.subheader("💬 Answers to Client Questions")
                 answers_box = st.empty()
