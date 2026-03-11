@@ -13,5 +13,5 @@ GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL = "llama-3.3-70b-versatile"   # fast & free on Groq
 
 # ── Proposal Settings ────────────────────────────────────────────────────────
-MIN_WORDS = 111
-MAX_WORDS = 150
+MIN_WORDS = 140
+MAX_WORDS = 180
