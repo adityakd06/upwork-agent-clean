@@ -6,7 +6,7 @@ import faiss
 _embedder = SentenceTransformer("all-MiniLM-L6-v2")
 
 
-def _chunk_text(text: str, chunk_size: int = 200) -> list[str]:
+def _chunk_text(text: str, chunk_size: int = 100) -> list[str]:
     """Split text into overlapping chunks by word count."""
     words = text.split()
     chunks = []
