@@ -33,17 +33,21 @@ with col1:
     st.subheader("📋 Job Description")
     job_description = st.text_area(
         label="Job description",
-        height=350,
+        height=250,
         placeholder="Paste the full job description...",
         label_visibility="collapsed",
+        key="job_input"
+    )
 
-        client_questions = st.text_area(
-        label="Client Questions (optional)",
+    st.subheader("❓ Client Questions (optional)")
+    client_questions = st.text_area(
+        label="Client Questions",
         height=150,
         placeholder="Paste any questions the client asked...",
-        label_visibility="visible",
-)
+        label_visibility="collapsed",
+        key="questions_input"
     )
+
     generate_btn = st.button("✨ Generate Proposal", use_container_width=True, type="primary")
 
 with col2:
@@ -70,6 +74,10 @@ with col2:
 
         if st.button("✅ Save to Knowledge Base"):
             doc = Document()
+            doc.add_paragraph("JOB TYPE: (fill this in)")
+            doc.add_paragraph("SKILLS USED: (fill this in)")
+            doc.add_paragraph("RESULT: Won the contract")
+            doc.add_paragraph(f"DATE: {datetime.date.today()}")
             doc.add_paragraph("")
             doc.add_paragraph("PROPOSAL:")
             doc.add_paragraph(st.session_state.proposal)
