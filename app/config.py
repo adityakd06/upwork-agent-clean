@@ -14,4 +14,4 @@ MODEL = "llama-3.3-70b-versatile"   # fast & free on Groq
 
 # ── Proposal Settings ────────────────────────────────────────────────────────
 MIN_WORDS = 140
-MAX_WORDS = 180
+MAX_WORDS = 200
