@@ -75,19 +75,20 @@ with col2:
 
             # ── Stream Answers (only if questions provided) ──────────
             if client_questions.strip():
-                time.sleep(5)
+                time.sleep(15)
                 st.divider()
                 st.subheader("💬 Answers to Client Questions")
                 answers_box = st.empty()
                 full_answers = ""
-
-                for token in stream_answers(job_description, client_questions, knowledge, prompt_style):
-                    full_answers += token
-                    answers_box.markdown(full_answers + "▌")
-
-                answers_box.markdown(full_answers)
-                st.session_state.answers = full_answers
-                st.code(full_answers, language=None)
+                try:
+                    for token in stream_answers(job_description, client_questions, knowledge, prompt_style):
+                        full_answers += token
+                        answers_box.markdown(full_answers + "▌")
+                    answers_box.markdown(full_answers)
+                    st.session_state.answers = full_answers
+                    st.code(full_answers, language=None)
+                except Exception as e:
+                    st.error(f"Answers failed: {e}")
 
     elif st.session_state.proposal:
         st.subheader("✍️ Proposal")
