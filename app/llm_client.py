@@ -1,4 +1,5 @@
 import requests
+import time
 import streamlit as st
 from config import GROQ_API_URL, MODEL
 
@@ -32,6 +33,11 @@ def query_llm(prompt: str) -> str:
         "stream": False,
     }
     response = requests.post(GROQ_API_URL, headers=_headers(), json=payload, timeout=60)
+    if response.status_code == 429:
+        time.sleep(15)
+        response = requests.post(
+            GROQ_API_URL, headers=_headers(), json=payload, stream=True, timeout=60
+    )
     response.raise_for_status()
     return response.json()["choices"][0]["message"]["content"]
 

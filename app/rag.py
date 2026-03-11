@@ -34,7 +34,7 @@ def build_index(text: str):
     return index, chunks
 
 
-def retrieve(query: str, index, chunks: list[str], top_k: int = 3) -> str:
+def retrieve(query: str, index, chunks: list[str], top_k: int = 2) -> str:
     """
     Given a job description query, find the top_k most relevant
     chunks from the knowledge base and return them as a single string.
