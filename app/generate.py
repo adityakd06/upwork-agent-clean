@@ -67,7 +67,9 @@ STRICT RULES:
 - Do NOT add any preamble — just answer each question numbered.
 - Do NOT sign off with a name or closing.
 - Never fabricate projects, tools, or numbers not mentioned in PAST WORK.
-- Never start the proposal body with a comparison or contrast statement like "Most [profession] can do X, but few can do Y." This sounds cliché and unprofessional.
+- NEVER use sentences like "Most [profession] can do X, but few can do Y" or any variation of this pattern anywhere in the proposal. This is cliché and unprofessional.
+- NEVER use the phrase "Most Power BI developers" or "Most [any profession]" anywhere.
+- The hook must directly address the client's specific problem in the first line, not make a generic industry observation.
 - The hook must be direct and specific to the client's problem, not a generic industry observation.
 
 --- JOB CONTEXT ---
