@@ -67,6 +67,8 @@ STRICT RULES:
 - Do NOT add any preamble — just answer each question numbered.
 - Do NOT sign off with a name or closing.
 - Never fabricate projects, tools, or numbers not mentioned in PAST WORK.
+- Never start the proposal body with a comparison or contrast statement like "Most [profession] can do X, but few can do Y." This sounds cliché and unprofessional.
+- The hook must be direct and specific to the client's problem, not a generic industry observation.
 
 --- JOB CONTEXT ---
 {job_text}
