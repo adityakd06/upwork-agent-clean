@@ -19,7 +19,7 @@ STRICT RULES — follow these or the output is wrong:
 - Do NOT copy any name, signature, or sign-off from the PAST WORK section.
 - Always sign off with "Warm regards, Sagar" at the end of the closure paragraph.
 - Always reference specific tools, platforms, and deliverables mentioned in the job description. Never write a generic proposal.
-- Begin with ""hi, hey, hello or names if mentioned
+- The very first word of the proposal MUST be a greeting. If the client's name is mentioned anywhere in the job description, start with "Hi [name]," — otherwise start with "Hey," or "Hi there,". Never start with anything else.
 
 --- PAST WORK & WRITING STYLE (only use what's here) ---
 {relevant_knowledge}
