@@ -51,6 +51,7 @@ with col1:
     )
 
     generate_btn = st.button("✨ Generate Proposal", use_container_width=True, type="primary")
+    regenerate_btn = st.button("🔄 Regenerate", use_container_width=True)
 
 with col2:
     if generate_btn:
@@ -59,6 +60,8 @@ with col2:
         else:
             st.session_state.proposal = ""
             st.session_state.answers = ""
+            
+    if generate_btn or regenerate_btn:
 
             # ── Stream Proposal ──────────────────────────────────────
             st.subheader("✍️ Proposal")
