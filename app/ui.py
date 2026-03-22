@@ -72,8 +72,12 @@ with col2:
                 full_proposal += token
                 proposal_box.markdown(full_proposal + "▌")
 
-            proposal_box.markdown(full_proposal)
+            import re
+            sentences = re.split(r'(?<=[.!?])\s+', full_proposal)
+            full_proposal = " ".join([s for s in sentences if not s.strip().startswith("Most")])
             st.session_state.proposal = full_proposal
+
+            proposal_box.markdown(full_proposal)
             st.code(full_proposal, language=None)
 
             # ── Stream Answers (only if questions provided) ──────────

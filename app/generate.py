@@ -3,6 +3,14 @@ from config import MIN_WORDS, MAX_WORDS
 from rag import build_index, retrieve
 
 
+def _remove_most_sentences(text: str) -> str:
+    """Remove any sentence that starts with the word 'Most'."""
+    import re
+    sentences = re.split(r'(?<=[.!?])\s+', text)
+    cleaned = [s for s in sentences if not s.strip().startswith("Most")]
+    return " ".join(cleaned)
+
+
 def _build_prompt(job_text: str, client_questions: str, knowledge: str, prompt_style: str) -> str:
     index, chunks = build_index(knowledge)
     relevant_knowledge = retrieve(job_text, index, chunks)
