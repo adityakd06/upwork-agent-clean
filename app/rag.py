@@ -10,7 +10,7 @@ def _chunk_text(text: str, chunk_size: int = 100) -> list[str]:
     """Split text into overlapping chunks by word count."""
     words = text.split()
     chunks = []
-    for i in range(0, len(words), chunk_size - 20):  # 20 word overlap
+    for i in range(0, len(words), chunk_size - 10):  # reduce overlap from 20 to 10
         chunk = " ".join(words[i:i + chunk_size])
         if chunk.strip():
             chunks.append(chunk)
@@ -34,7 +34,7 @@ def build_index(text: str):
     return index, chunks
 
 
-def retrieve(query: str, index, chunks: list[str], top_k: int = 2) -> str:
+def retrieve(query: str, index, chunks: list[str], top_k: int = 1) -> str:
     """
     Given a job description query, find the top_k most relevant
     chunks from the knowledge base and return them as a single string.

@@ -21,6 +21,7 @@ STRICT RULES — follow these or the output is wrong:
 - Always reference specific tools, platforms, and deliverables mentioned in the job description. Never write a generic proposal.
 - Always start with "Hey," or "Hi there,". NEVER use a client's name unless the user explicitly provides it separately. Do not guess or extract names from the job description.
 - The FIRST WORD of the proposal must be "Hey," or "Hi there," — no exceptions. If the output does not start with "Hey" or "Hi there", it is wrong.
+- If you catch yourself writing "Most [profession]" or "Most [company type]" — stop and rewrite that sentence completely.
 
 --- PAST WORK & WRITING STYLE (only use what's here) ---
 {relevant_knowledge}
