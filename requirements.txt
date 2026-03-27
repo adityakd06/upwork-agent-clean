@@ -3,3 +3,5 @@ python-docx
 streamlit
 sentence-transformers
 faiss-cpu
+gspread
+google-auth
