@@ -23,12 +23,21 @@ def get_prompt_style():
 knowledge    = get_knowledge()
 prompt_style = get_prompt_style()
 
+# if "proposal" not in st.session_state:  #(old functionality)
+#     st.session_state.proposal = ""
+# if "answers" not in st.session_state:
+#     st.session_state.answers = ""
+# if "job_details" not in st.session_state:
+#     st.session_state.job_details = {}
+
 if "proposal" not in st.session_state:
     st.session_state.proposal = ""
 if "answers" not in st.session_state:
     st.session_state.answers = ""
 if "job_details" not in st.session_state:
     st.session_state.job_details = {}
+if "clear_count" not in st.session_state:
+    st.session_state.clear_count = 0
 
 st.title("📊 Upwork Proposal Generator")
 st.caption("Powered by Groq")
@@ -42,7 +51,7 @@ with col1:
         height=250,
         placeholder="Paste the full Upwork job page here...",
         label_visibility="collapsed",
-        key="job_input"
+        key=f"job_input_{st.session_state.clear_count}"
     )
 
     st.subheader("🔗 Job Link")
@@ -50,7 +59,7 @@ with col1:
         label="Job Link",
         placeholder="https://www.upwork.com/jobs/...",
         label_visibility="collapsed",
-        key="job_link_input"
+        key=f"job_link_input_{st.session_state.clear_count}"
     )
 
     st.subheader("❓ Client Questions (optional)")
@@ -59,7 +68,7 @@ with col1:
         height=150,
         placeholder="Paste any questions the client asked...",
         label_visibility="collapsed",
-        key="questions_input"
+        key=f"questions_input_{st.session_state.clear_count}"
     )
 
     generate_btn   = st.button("✨ Generate Proposal", use_container_width=True, type="primary")
@@ -196,6 +205,7 @@ with col2:
         st.session_state.proposal = ""
         st.session_state.answers = ""
         st.session_state.job_details = {}
+        st.session_state.clear_count += 1
         st.rerun()
 
     # Auto download on click
