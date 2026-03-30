@@ -164,27 +164,59 @@ with col2:
     else:
         st.info("Your proposal will appear here once generated.")
 
-    # ── Save to Knowledge Base ───────────────────────────────────────
+    # ── Save to Knowledge Base ─────────────────────────────────────── (this is the old ui)
+    # if st.session_state.proposal:
+    #     st.divider()
+    #     if st.button("✅ Save to Knowledge Base"):
+    #         doc = Document()
+    #         doc.add_paragraph(f"DATE: {datetime.date.today()}")
+    #         doc.add_paragraph("")
+    #         doc.add_paragraph("PROPOSAL:")
+    #         doc.add_paragraph(st.session_state.proposal)
+    #         if st.session_state.answers:
+    #             doc.add_paragraph("")
+    #             doc.add_paragraph("QUESTION ANSWERS:")
+    #             doc.add_paragraph(st.session_state.answers)
+
+    #         buffer = BytesIO()
+    #         doc.save(buffer)
+    #         buffer.seek(0)
+
+    #         st.download_button(
+    #             label="📥 Download .docx",
+    #             data=buffer,
+    #             file_name=f"proposal_{datetime.date.today()}.docx",
+    #             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    #         )
     if st.session_state.proposal:
         st.divider()
-        if st.button("✅ Save to Knowledge Base"):
-            doc = Document()
-            doc.add_paragraph(f"DATE: {datetime.date.today()}")
-            doc.add_paragraph("")
-            doc.add_paragraph("PROPOSAL:")
-            doc.add_paragraph(st.session_state.proposal)
-            if st.session_state.answers:
-                doc.add_paragraph("")
-                doc.add_paragraph("QUESTION ANSWERS:")
-                doc.add_paragraph(st.session_state.answers)
+    
+    # Clear All button
+    if st.button("🗑️ Clear All", use_container_width=True):
+        st.session_state.proposal = ""
+        st.session_state.answers = ""
+        st.session_state.job_details = {}
+        st.rerun()
 
-            buffer = BytesIO()
-            doc.save(buffer)
-            buffer.seek(0)
+    # Auto download on click
+    doc = Document()
+    doc.add_paragraph(f"DATE: {datetime.date.today()}")
+    doc.add_paragraph("")
+    doc.add_paragraph("PROPOSAL:")
+    doc.add_paragraph(st.session_state.proposal)
+    if st.session_state.answers:
+        doc.add_paragraph("")
+        doc.add_paragraph("QUESTION ANSWERS:")
+        doc.add_paragraph(st.session_state.answers)
 
-            st.download_button(
-                label="📥 Download .docx",
-                data=buffer,
-                file_name=f"proposal_{datetime.date.today()}.docx",
-                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            )
+    buffer = BytesIO()
+    doc.save(buffer)
+    buffer.seek(0)
+
+    st.download_button(
+        label="✅ Save to Knowledge Base",
+        data=buffer,
+        file_name=f"proposal_{datetime.date.today()}.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        use_container_width=True
+    )
